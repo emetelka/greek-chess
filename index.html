@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greek Gods Chess</title>
+  <meta name="description" content="A chess game featuring Greek gods - battle on the board with Zeus, Hera, and the Olympians!">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Greek Gods Chess</h1>
+      <p class="tagline">A Battle of Olympus on the Chessboard</p>
+    </header>
+
+    <main>
+      <div class="game-container">
+        <aside class="sidebar left">
+          <div class="captured-pieces-section">
+            <h3>Captured by White</h3>
+            <div class="captured-pieces white" id="captured-white"></div>
+          </div>
+        </aside>
+
+        <div class="board-section">
+          <div class="turn-indicator" id="turn-indicator">
+            White's Turn (Olympians)
+          </div>
+          <div id="chess-board" class="chess-board">
+            <!-- Board will be rendered here by JavaScript -->
+          </div>
+          <div class="game-status" id="game-status">
+            <!-- Game status messages appear here -->
+          </div>
+        </div>
+
+        <aside class="sidebar right">
+          <div class="move-history-section">
+            <h3>Move History</h3>
+            <div class="moves-list" id="moves-list">
+              <!-- Move history will be rendered here -->
+            </div>
+            <button id="undo-button" class="undo-button">Undo Move</button>
+            <button id="reset-button" class="reset-button">New Game</button>
+          </div>
+          <div class="captured-pieces-section">
+            <h3>Captured by Black</h3>
+            <div class="captured-pieces black" id="captured-black"></div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <p>A tribute to the Greek pantheon through the game of kings</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
