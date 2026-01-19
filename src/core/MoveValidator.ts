@@ -103,14 +103,21 @@ export class MoveValidator {
     // Add en passant if applicable
     if (piece.type === PieceType.PAWN && lastMove) {
       const direction = getPawnDirection(piece.color);
-      const enPassantSquares = [
-        new Position(position.row + direction, position.col - 1),
-        new Position(position.row + direction, position.col + 1),
-      ];
+      const targetRow = position.row + direction;
 
-      for (const square of enPassantSquares) {
-        if (this.canEnPassant(position, square, piece.color, lastMove)) {
-          legalMoves.push(square);
+      // Check left diagonal
+      if (position.col > 0) {
+        const leftSquare = new Position(targetRow, position.col - 1);
+        if (this.canEnPassant(position, leftSquare, piece.color, lastMove)) {
+          legalMoves.push(leftSquare);
+        }
+      }
+
+      // Check right diagonal
+      if (position.col < 7) {
+        const rightSquare = new Position(targetRow, position.col + 1);
+        if (this.canEnPassant(position, rightSquare, piece.color, lastMove)) {
+          legalMoves.push(rightSquare);
         }
       }
     }
