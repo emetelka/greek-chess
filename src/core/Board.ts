@@ -29,7 +29,7 @@ export class Board implements IBoard {
     for (let row = 0; row < BOARD_SIZE; row++) {
       board[row] = [];
       for (let col = 0; col < BOARD_SIZE; col++) {
-        board[row][col] = null;
+        board[row]![col] = null;
       }
     }
     return board;
@@ -53,7 +53,7 @@ export class Board implements IBoard {
     if (!this.isValidPosition(pos)) {
       return null;
     }
-    return this.squares[pos.row][pos.col];
+    return this.squares[pos.row]![pos.col] ?? null;
   }
 
   /**
@@ -63,7 +63,7 @@ export class Board implements IBoard {
     if (!this.isValidPosition(pos)) {
       throw new Error(`Invalid position: ${pos.toString()}`);
     }
-    this.squares[pos.row][pos.col] = piece;
+    this.squares[pos.row]![pos.col] = piece;
   }
 
   /**
@@ -156,8 +156,8 @@ export class Board implements IBoard {
     for (let row = 0; row < BOARD_SIZE; row++) {
       newSquares[row] = [];
       for (let col = 0; col < BOARD_SIZE; col++) {
-        const piece = this.squares[row][col];
-        newSquares[row][col] = piece ? piece.clone() : null;
+        const piece = this.squares[row]?.[col];
+        newSquares[row]![col] = piece ? piece.clone() : null;
       }
     }
 
@@ -175,7 +175,7 @@ export class Board implements IBoard {
       result += `${rank} `;
 
       for (let col = 0; col < BOARD_SIZE; col++) {
-        const piece = this.squares[row][col];
+        const piece = this.squares[row]?.[col];
         if (piece) {
           result += (piece as Piece).toChar() + ' ';
         } else {

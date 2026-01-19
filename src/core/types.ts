@@ -73,8 +73,8 @@ export class Position {
     }
 
     const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-    const file = notation[0].toLowerCase();
-    const rank = parseInt(notation[1], 10);
+    const file = notation[0]!.toLowerCase();
+    const rank = parseInt(notation[1]!, 10);
 
     const col = files.indexOf(file);
     const row = 8 - rank; // Convert rank to row
@@ -123,6 +123,9 @@ export interface Piece {
   color: Color;
   hasMoved: boolean;
   clone(): Piece;
+  equals(other: Piece): boolean;
+  toChar(): string;
+  toUnicode(): string;
 }
 
 /**
@@ -160,4 +163,6 @@ export interface IBoard {
   clone(): IBoard;
   isEmpty(pos: Position): boolean;
   isValidPosition(pos: Position): boolean;
+  findPiece(type: PieceType, color: Color): Position | null;
+  getPiecesOfColor(color: Color): Array<{ piece: Piece; position: Position }>;
 }

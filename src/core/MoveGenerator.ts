@@ -10,11 +10,8 @@ import { Piece } from './Piece';
 import { DIRECTIONS } from './constants';
 import {
   isValidPosition,
-  getSquaresBetween,
   getPawnDirection,
   getPawnStartRow,
-  getPawnPromotionRow,
-  getBackRank,
 } from '../utils/boardHelpers';
 
 export class MoveGenerator {

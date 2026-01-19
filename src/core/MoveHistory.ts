@@ -45,7 +45,7 @@ export class MoveHistory {
       return null;
     }
 
-    return this.history[this.history.length - 1].move;
+    return this.history[this.history.length - 1]!.move;
   }
 
   /**
@@ -83,7 +83,7 @@ export class MoveHistory {
     if (index < 0 || index >= this.history.length) {
       return null;
     }
-    return this.history[index].move;
+    return this.history[index]!.move;
   }
 
   /**
@@ -93,6 +93,6 @@ export class MoveHistory {
     if (index < 0 || index >= this.history.length) {
       return null;
     }
-    return this.history[index];
+    return this.history[index] ?? null;
   }
 }

@@ -6,8 +6,7 @@
 import { Position, Color, PieceType, IBoard, Move } from './types';
 import { Piece } from './Piece';
 import { MoveGenerator } from './MoveGenerator';
-import { Board } from './Board';
-import { getBackRank, getPawnDirection, isPathClear } from '../utils/boardHelpers';
+import { getBackRank, getPawnDirection } from '../utils/boardHelpers';
 
 export class MoveValidator {
   private generator: MoveGenerator;

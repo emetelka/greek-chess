@@ -29,7 +29,7 @@ export class BoardRenderer {
       this.squares[row] = [];
       for (let col = 0; col < 8; col++) {
         const square = this.createSquare(row, col);
-        this.squares[row][col] = square;
+        this.squares[row]![col] = square;
         this.boardElement.appendChild(square);
       }
     }
@@ -67,8 +67,8 @@ export class BoardRenderer {
   clearHighlights(): void {
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
-        const square = this.squares[row][col];
-        square.classList.remove('selected', 'legal-move', 'last-move', 'in-check', 'has-piece');
+        const square = this.squares[row]?.[col];
+        square?.classList.remove('selected', 'legal-move', 'last-move', 'in-check', 'has-piece');
       }
     }
   }
@@ -144,8 +144,8 @@ export class BoardRenderer {
   addClickHandler(handler: (position: Position) => void): void {
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
-        const square = this.squares[row][col];
-        square.addEventListener('click', () => {
+        const square = this.squares[row]?.[col];
+        square?.addEventListener('click', () => {
           handler(new Position(row, col));
         });
       }

@@ -318,6 +318,8 @@ class GreekChessGame {
       const whiteMove = moves[i];
       const blackMove = moves[i + 1];
 
+      if (!whiteMove) continue;
+
       const moveEntry = document.createElement('div');
       moveEntry.className = 'move-entry';
 
