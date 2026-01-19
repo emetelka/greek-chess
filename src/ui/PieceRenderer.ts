@@ -83,11 +83,11 @@ export class PieceRenderer {
    * Update captured pieces display
    */
   renderCapturedPieces(capturedWhite: Piece[], capturedBlack: Piece[]): void {
-    // Render white captured pieces (captured by black)
+    // Render pieces captured by white (black pieces)
     const whiteCapturedElement = document.getElementById('captured-white');
     if (whiteCapturedElement) {
       whiteCapturedElement.innerHTML = '';
-      for (const piece of capturedWhite) {
+      for (const piece of capturedBlack) {
         const pieceEl = document.createElement('span');
         pieceEl.className = 'captured-piece';
         pieceEl.textContent = themeManager.getPieceSymbol(piece);
@@ -96,11 +96,11 @@ export class PieceRenderer {
       }
     }
 
-    // Render black captured pieces (captured by white)
+    // Render pieces captured by black (white pieces)
     const blackCapturedElement = document.getElementById('captured-black');
     if (blackCapturedElement) {
       blackCapturedElement.innerHTML = '';
-      for (const piece of capturedBlack) {
+      for (const piece of capturedWhite) {
         const pieceEl = document.createElement('span');
         pieceEl.className = 'captured-piece';
         pieceEl.textContent = themeManager.getPieceSymbol(piece);
