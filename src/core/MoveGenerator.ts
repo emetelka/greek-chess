@@ -76,8 +76,11 @@ export class MoveGenerator {
     ];
 
     for (const dir of captureDirs) {
-      const capturePos = new Position(position.row + dir.row, position.col + dir.col);
-      if (isValidPosition(capturePos.row, capturePos.col)) {
+      const targetRow = position.row + dir.row;
+      const targetCol = position.col + dir.col;
+
+      if (isValidPosition(targetRow, targetCol)) {
+        const capturePos = new Position(targetRow, targetCol);
         const targetPiece = this.board.getPiece(capturePos);
         if (targetPiece && targetPiece.color !== color) {
           moves.push(capturePos);
